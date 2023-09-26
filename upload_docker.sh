@@ -5,11 +5,13 @@
 
 # Step 1:
 # Create dockerpath
-# dockerpath=<your docker ID/path>
-
+dockerpath=trind7
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 
 # Step 3:
 # Push image to a docker repository
+docker tag udacity trind7/udacity:v1.0
+docker images
+docker push trind7/udacity:v1.0
