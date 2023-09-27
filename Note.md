@@ -36,7 +36,7 @@ Copy and paste this terminal output, which has log info, in a text file docker_o
 4. Task 4: Upload the Docker Image -> Done
 Need to login -> run: docker login docker.io
 ./upload_docker.sh
-5. Task 5: Configure Kubernetes to Run Locally
+5. Task 5: Configure Kubernetes to Run Locally -> Done
 a. Install minikube
 Guide: https://minikube.sigs.k8s.io/docs/start/
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -44,5 +44,30 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 b.
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+c.
+minikube start
+Increase the Cloud9 memory limits: Run the resize.sh script present in this folder to increase the Cloud9 available-memory limits.
+Deploy an Event-Driven Microservice -> Lambda Functions
+cd DevOps_Microservices/Supporting-material
+# The instructor shows `cd awslambda` per hierarchy of his personal repo
+df -h
+chmod +x resize.sh
+./resize.sh 
+df -h
+cd ..
+6. Task 6: Deploy with Kubernetes and Save Output Logs -> Done
+
+./run_kubernetes.sh
+./make_prediction.sh
+
+d. Remove: kubectl delete deployment udacity-app
+kubectl get services udacity-app
+minikube service udacity-app
+kubectl config view
+
+Task 7: [Important] Delete Cluster 
+Run:
+minikube delete
