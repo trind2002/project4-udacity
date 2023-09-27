@@ -18,9 +18,9 @@ jobs:
                 # fallback to using the latest cache if no exact match is found
                 - v1-dependencies-
             - run:
-              name: create virtualenv
-              command: |
-                make setup
+                name: create virtualenv
+                command: |
+                    make setup
             - run:
                 name: install dependencies
                 command: |
