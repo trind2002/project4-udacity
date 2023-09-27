@@ -1,4 +1,4 @@
-<include a CircleCI status badge, here>
+[![trind2002](https://circleci.com/gh/trind2002/project4-udacity.svg?style=svg)](<https://app.circleci.com/pipelines/github/trind2002/project4-udacity>)
 
 ## Project Overview
 
