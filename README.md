@@ -46,10 +46,43 @@ source ~/.devops/bin/activate
 
 * Setup and Configure Docker locally
 * Setup and Configure Kubernetes locally
+1. You should have a minikube installed
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+What you’ll need to minikube start:
+- 2 CPUs or more
+- 2GB of free memory
+- 20GB of free disk space 
+  Note: Increase the Cloud9 memory limits, you can run command:
+```bash
+df -h
+chmod +x resize.sh
+./resize.sh 
+df -h
+```
+2. To start a local cluster, type the terminal command:
+```bash
+minikube start
+```
 * Create Flask app in Container
+1. Build the Docker image
+2. Run the container with docker image created
+```bash
+docker build --tag=udacity .
+docker run -p 8000:80 udacity
+```
 * Run via kubectl
+1. Step 1: Export your Docker ID/path: dockerpath=<>
+2. Step 2: Deploy an App from the Dockerhub to the Kubernetes Cluster
+3. Step 3: List kubernetes pods
+4. Step 4: Forward the container port to a host
 
-
-### A short explanation of file `resize.sh` in the repository
-* `resize.sh` Increase the Cloud9 memory limits: Run the resize.sh script present in this folder to increase the Cloud9 available-memory limits.
+```bash
+dockerpath=trind7
+kubectl create deployment udacity-app --image=trind7/udacity:v1.0
+kubectl get pods
+kubectl port-forward deployment/udacity-app 8080:80
+```
 
